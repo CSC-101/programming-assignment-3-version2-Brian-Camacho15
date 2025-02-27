@@ -2,6 +2,8 @@ import data
 import build_data
 import unittest
 
+import hw3
+from hw3 import population_total
 
 # These two values are defined to support testing below. The
 # data within these structures should not be modified. Doing
@@ -174,33 +176,121 @@ reduced_data = [
          'Population per Square Mile': 3.0},
         'WY')
     ]
+test = full_data.copy()
 
 class TestCases(unittest.TestCase):
     pass
 
     # Part 1
     # test population_total
+    def test_population_total(self):
+        input= test
+        expected= 318857056
+        self.assertEqual(hw3.population_total(input), expected,)
+
+
 
     # Part 2
     # test filter_by_state
+    def test_filter_by_state(self):
+        input= hw3.filter_by_state(test, 'CA')
+        total=hw3.population_total(input)
+        expected=38802500
+        self.assertEqual(total, expected)
+    def test_filter_by_state_2(self):
+        input= hw3.filter_by_state(test, 'CAD')
+        total=hw3.population_total(input)
+        expected=0
+        self.assertEqual(total, expected)
+
+
+
+
 
     # Part 3
     # test population_by_education
+    def test_population_by_education(self):
+        input= test
+        expected= 87911.145
+        self.assertEqual(hw3.population_by_education(input, 'Bachelor\'s Degree or Higher'), expected)
+    def test_population_by_education_2(self):
+        input= test
+        expected= 0
+        self.assertEqual(hw3.population_by_education(input, 'High School'), expected)
     # test population_by_ethnicity
+    def test_population_by_ethnicity(self):
+        input= test
+        result=hw3.population_by_ethnicity(input, 'Two or More Races')
+        print(result)
     # test population_below_poverty_level
+    def test_popuplation_below_poverty_level(self):
+        input= test
+        result=hw3.population_below_poverty(input)
+        print(result)
+
+
+
+
 
     # Part 4
     # test percent_by_education
+    def test_percent_by_education(self):
+        input=test
+        result=hw3.percent_by_education(input, 'Bachelor\'s Degree or Higher')
+        print(result)
+    def test_percent_by_education_2(self):
+        input=test
+        result=hw3.percent_by_education(input, 'Middle School')
+        print(result)
     # test percent_by_ethnicity
+    def test_percent_by_ethnicity(self):
+        input=test
+        result=hw3.percent_by_ethnicity(input, 'Two or More Races')
+        print(result)
+    def test_percent_by_ethnicity_2(self):
+        input=test
+        result=hw3.percent_by_ethnicity(input, 'Hispanic')
+        print(result)
     # test percent_below_poverty_level
+    def test_percent_below_poverty_level(self):
+        input=test
+        result=hw3.percent_below_poverty_level(input)
+        print(result)
+
+
+
+
 
     # Part 5
     # test education_greater_than
+    def test_education_greater_than(self):
+        input=test
+        result=hw3.education_greater_than(input, "Bachelor's Degree or Higher", 21)
+        print(result)
     # test education_less_than
+    def test_education_less_than(self):
+        input=test
+        result=hw3.education_less_than(input, "Bachelor's Degree or Higher", 21)
+        print(result)
     # test ethnicity_greater_than
+    def test_ethnicity_greater_than(self):
+        input=test
+        result=hw3.ethnicity_greater_than(input, "Two or More Races", 21)
+        print(result)
     # test ethnicity_less_than
+    def test_ethnicity_less_than(self):
+        input=test
+        result=hw3.ethnicity_less_than(input, "Two or More Races", 21)
     # test below_poverty_level_greater_than
+    def test_below_poverty_level_greater_than(self):
+        input=test
+        result=hw3.below_poverty_level_greate_than(input, 10)
+        print(result)
     # test below_poverty_level_less_than
+    def test_below_poverty_level_less_than(self):
+        input=test
+        result=hw3.below_poverty_level_less_than(input, 10)
+        print(result)
 
 
 
